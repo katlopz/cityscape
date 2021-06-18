@@ -1,4 +1,4 @@
-# cityscape
+# Cityscape
 
 Launched to https://katlopz.github.io/cityscape/  
 Made with p5.js  
