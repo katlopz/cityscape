@@ -42,7 +42,11 @@ var fireworkRad = 0;
 var fireworkMax = 120;
 var fireworkAngles = [0,15,30,45,60,75,90,105,120,135,150,165,180,195,210,225,240,255,270,285,300,315,330,345];
 
+let audioStarted = false;
+
 function preload() {
+  getAudioContext().suspend();
+  
   //loading sounds
   fwLiftSound = loadSound('assets/liftSound.wav');
   fwExplodeSound = loadSound('assets/explodeSound.wav');
@@ -150,6 +154,12 @@ function draw() {
 
 // for stars
 function mouseMoved() {
+  // Start audio on user gesture
+  if (!audioStarted) {
+     userStartAudio();
+     audioStarted = true;
+  }
+  
   for(var i = 0; i<numOfLights; i++) {
     if(Math.abs(mouseX-xLights[i]) < mouseRad && Math.abs(mouseY-yLights[i]) < mouseRad) {
         fill(255);
